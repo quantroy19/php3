@@ -16,14 +16,16 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Email</th>
+                <th>khoa</th>
+                <th>tuoi</th>
             </tr>
         </thead>
-        <@foreach ($users as $user)
+        <@foreach ($listSv as $sv)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
+                <td>{{ $sv->id }}</td>
+                <td>{{ $sv->tensv }}</td>
+                <td>{{ $sv->khoa }}</td>
+                <td>{{ $sv->tuoi }}</td>
             </tr>
             @endforeach
     </table>

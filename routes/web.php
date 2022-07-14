@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuanController;
 use App\Http\Controllers\MinhController;
+use App\Http\Controllers\SinhVienController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,4 @@ Route::get('/', function () {
 Route::get('/test', 'QuanController@index');
 Route::get('/quan', [QuanController::class, 'quan']);
 Route::get('/minh', [MinhController::class, 'showName']);
+Route::get('/sinhVien', [SinhVienController::class, 'loadListSV']);
