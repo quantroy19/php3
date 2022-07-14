@@ -6,19 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Minh extends Model
+class SinhVien extends Model
 {
     use HasFactory;
-    protected $table = 'users';
-    protected $fillable = [
-        'id', 'name', 'email',
-    ];
+    protected $table = 'sinh-viens';
+
+    protected $fillable = ['id', 'khoa', 'tensv', 'tuoi'];
 
     public function loadList($param = [])
     {
         $query = DB::table($this->table)
-            ->select($this->fillable)
-            ->where('id', 1);
+            ->where('tuoi', '>',  22)
+            ->select($this->fillable);
         $lists = $query->get();
         return $lists;
     }
