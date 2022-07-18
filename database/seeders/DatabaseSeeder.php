@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // Tạo dữ liệu test
         $this->call(SinhVienSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

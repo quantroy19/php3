@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuanController;
 use App\Http\Controllers\MinhController;
 use App\Http\Controllers\SinhVienController;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +19,18 @@ use App\Http\Controllers\SinhVienController;
 |
 */
 
+Auth::logout();
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/test', 'QuanController@index');
 Route::get('/quan', [QuanController::class, 'quan']);
 Route::get('/minh', [MinhController::class, 'showName']);
-Route::get('/sinhVien', [SinhVienController::class, 'loadListSV']);
+
+Route::get('/login', [LoginController::class, 'getViewLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'postLogin']);
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/sinhVien', [SinhVienController::class, 'loadListSV']);
+});
