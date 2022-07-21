@@ -21,4 +21,12 @@ class SinhVien extends Model
         $lists = $query->get();
         return $lists;
     }
+
+    public function loadListWithPage($param = [])
+    {
+        $list = DB::table($this->table)
+            ->select($this->fillable)
+            ->paginate(10);
+        return $list;
+    }
 }

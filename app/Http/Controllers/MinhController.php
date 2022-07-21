@@ -20,7 +20,16 @@ class MinhController extends Controller
         // return view('minh.index', $this->v);
         // $this->v['users'] = DB::table('users')->get();
         $obsMinh = new Minh();
-        $this->v['users'] = $obsMinh->loadList();
-        return view('minh.index', $this->v);
+        $this->v['list'] = $obsMinh->loadList();
+        $this->v['title'] = __('Nguoi dung');
+        return view('user.index', $this->v);
+    }
+
+    public function listUser()
+    {
+        $obsMinh = new Minh();
+        $this->v['list'] = $obsMinh->loadListWithPage();
+        $this->v['title'] = __('Nguoi dung');
+        return view('user.index', $this->v);
     }
 }

@@ -1,34 +1,24 @@
-<!doctype html>
-<html lang="en">
+@extends('templates.layout')
+@section('title', $title)
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-    {{-- Hi {{ $users }} --}}
+@section('content')
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>khoa</th>
-                <th>tuoi</th>
-            </tr>
-        </thead>
-        <@foreach ($listSv as $sv)
-            <tr>
-                <td>{{ $sv->id }}</td>
-                <td>{{ $sv->tensv }}</td>
-                <td>{{ $sv->khoa }}</td>
-                <td>{{ $sv->tuoi }}</td>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>Khoa</th>
+            <th>Old</th>
+        </tr>
+        <tbody>
+            @foreach ($listSv as $sv)
+                <tr>
+                    <td>{{ $sv->id }}</td>
+                    <td>{{ $sv->tensv }}</td>
+                    <td>{{ $sv->khoa }}</td>
+                    <td>{{ $sv->tuoi }}</td>
+                </tr>
             @endforeach
+        </tbody>
     </table>
-</body>
-
-</html>
+    {{ $listSv->links() }}
+@endsection

@@ -17,9 +17,16 @@ class Minh extends Model
     public function loadList($param = [])
     {
         $query = DB::table($this->table)
-            ->select($this->fillable)
-            ->where('id', 1);
+            ->select($this->fillable);
         $lists = $query->get();
+        return $lists;
+    }
+
+    public function loadListWithPage($params = [])
+    {
+        $query = DB::table($this->table)
+            ->select($this->fillable);
+        $lists = $query->paginate(1);
         return $lists;
     }
 }

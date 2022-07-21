@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 Route::get('/test', 'QuanController@index');
 Route::get('/quan', [QuanController::class, 'quan']);
-Route::get('/minh', [MinhController::class, 'showName']);
+Route::get('/minh', [MinhController::class, 'listUser']);
 
 Route::get('/login', [LoginController::class, 'getViewLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'postLogin']);
@@ -34,3 +34,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/sinhVien', [SinhVienController::class, 'loadListSV']);
 });
+Route::get('/user', function () {
+    return view('user.index');
+});
+
+Route::get('/sv', [SinhVienController::class, 'listSv']);

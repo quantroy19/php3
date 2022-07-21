@@ -15,7 +15,15 @@ class SinhVienController extends Controller
     public function loadListSV()
     {
         $obsSinhVien = new SinhVien();
-        $this->v['listSv'] = $obsSinhVien->loadList();
+        $this->v['list'] = $obsSinhVien->loadList();
+        return view('user.index', $this->v);
+    }
+
+    public function listSv()
+    {
+        $obsSinhVien = new SinhVien();
+        $this->v['title'] = __('sinh vien');
+        $this->v['listSv'] = $obsSinhVien->loadListWithPage();
         return view('sinhVien.index', $this->v);
     }
 }
