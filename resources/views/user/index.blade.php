@@ -4,10 +4,10 @@
     <style>
         body {
             /*-webkit-touch-callout: none;
-                                                                            -webkit-user-select: none;
-                                                                            -moz-user-select: none;
-                                                                            -ms-user-select: none;
-                                                                            -o-user-select: none;*/
+                                                                                            -webkit-user-select: none;
+                                                                                            -moz-user-select: none;
+                                                                                            -ms-user-select: none;
+                                                                                            -o-user-select: none;*/
             user-select: none;
         }
 
@@ -83,8 +83,8 @@
                             </button>
                             <a href="{{ url('/user') }}" class="btn btn-default btn-sm "><i class="fa fa-remove"></i>
                                 Clear </a>
-                            <a href="" class="btn btn-info btn-sm"><i class="fa fa-user-plus"
-                                    style="color:white;"></i>
+                            <a href="{{ route('route_backend_user_add') }}" class="btn btn-info btn-sm"><i
+                                    class="fa fa-user-plus" style="color:white;"></i>
                                 Add new</a>
                         </div>
                     </div>
@@ -161,7 +161,8 @@
                                 <tr>
                                     {{-- <td><input type="checkbox" name="chk_hv[]" class="chk_hv" id="chk_hv_{{$item->id}}" value="{{$item->id}}"> </td> --}}
                                     <td class="text-center">1</td>
-                                    <td class="text-center"><a style="color:#333333;font-weight: bold;" href=""
+                                    <td class="text-center"><a style="color:#333333;font-weight: bold;"
+                                            href="{{ route('user.detail', $user->id) }}"
                                             style="white-space:unset;text-align: justify;"> {{ $user->name }} <i
                                                 class="fa fa-edit"></i></a>
                                     </td>

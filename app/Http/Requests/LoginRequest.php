@@ -29,12 +29,12 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'email.required' => 'ko duoc de trong',
-            'email.email' => 'nhap email di',
-            'password.required' => 'ko de trong pass',
-        ];
-    }
+    // public function messages()
+    // {
+    //     return [
+    //         'email.required' => 'ko duoc de trong',
+    //         'email.email' => 'nhap email di',
+    //         'password.required' => 'ko de trong pass',
+    //     ];
+    // }
 }

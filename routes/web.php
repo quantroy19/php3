@@ -29,13 +29,17 @@ Route::get('/minh', [MinhController::class, 'listUser']);
 
 Route::get('/login', [LoginController::class, 'getViewLogin'])->name('login');
 Route::post('/login', [LoginController::class, 'postLogin']);
+Route::get('/logout', [LoginController::class, 'getLogout'])->name('logout');
 
-Route::middleware('auth')->group(function () {
-
-    Route::get('/sinhVien', [SinhVienController::class, 'loadListSV']);
+Route::middleware('')->group(function () {
 });
 Route::get('/user', function () {
     return view('user.index');
 });
 
 Route::get('/sv', [SinhVienController::class, 'listSv']);
+Route::get('/user', [MinhController::class, 'listUser'])->name('user');
+Route::match(['get', 'post'], '/user/add', [MinhController::class, 'add'])
+    ->name('route_backend_user_add');
+
+Route::get('user/detail/{id}', [MinhController::class, 'detail'])->name('user.detail');

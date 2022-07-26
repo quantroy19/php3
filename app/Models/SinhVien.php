@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SinhVien extends Model
 {
@@ -28,5 +29,15 @@ class SinhVien extends Model
             ->select($this->fillable)
             ->paginate(10);
         return $list;
+    }
+
+    public function saveNew($params)
+    {
+        $data = array_merge($params, [
+            'password' => Hash::make($params['password'])
+        ]);
+        // dd($data);
+        $res = DB::table('users')->insertGetId($data);
+        return $res;
     }
 }

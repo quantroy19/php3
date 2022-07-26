@@ -1,3 +1,6 @@
+@php
+$objUser = Auth::user();
+@endphp
 <!DOCTYPE html>
 <html>
 
@@ -166,7 +169,7 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{ route('logout') }}" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -248,29 +251,29 @@
     </div>
     <!-- template for the modal component -->
     <script type="text/x-template" id="modal-template"><transition name="modal">
-                        <div class="modal-mask">
-                            <div class="modal-wrapper">
-                                <div class="modal-container">
-                                    <div class="modal-header">
-                                        <slot name="header">
-                                            default header
-                                        </slot>
-                                    </div>
-                                    <div class="modal-body">
-                                        <slot name="body">
-                                            default body
-                                        </slot>
-                                    </div>
+                                                            <div class="modal-mask">
+                                                                <div class="modal-wrapper">
+                                                                    <div class="modal-container">
+                                                                        <div class="modal-header">
+                                                                            <slot name="header">
+                                                                                default header
+                                                                            </slot>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <slot name="body">
+                                                                                default body
+                                                                            </slot>
+                                                                        </div>
 
-                                    <div class="modal-footer text-center">
-                                        <slot name="footer">
-                                            <button class="modal-default-button" @click="$emit('close')"> OK</button>
-                                        </slot>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </transition></script>
+                                                                        <div class="modal-footer text-center">
+                                                                            <slot name="footer">
+                                                                                <button class="modal-default-button" @click="$emit('close')"> OK</button>
+                                                                            </slot>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </transition></script>
 
     <!-- jQuery 3 -->
 

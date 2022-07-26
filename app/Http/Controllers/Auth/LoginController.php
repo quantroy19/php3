@@ -31,10 +31,16 @@ class LoginController extends Controller
         // dd($email, $password);
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect('sinhVien');
+            return redirect('sv');
         } else {
             return redirect('login')->with('error', 'Loi roi nhe');
         }
         // return dd($request->all());
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect('login');
     }
 }
