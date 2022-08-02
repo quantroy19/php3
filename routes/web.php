@@ -43,3 +43,4 @@ Route::match(['get', 'post'], '/user/add', [MinhController::class, 'add'])
     ->name('route_backend_user_add');
 
 Route::get('user/detail/{id}', [MinhController::class, 'detail'])->name('user.detail');
+Route::post('user/detail/{id}', [MinhController::class, 'update'])->name('user.updates');
