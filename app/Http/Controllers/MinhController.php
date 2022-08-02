@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\Minh;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class MinhController extends Controller
@@ -61,5 +62,29 @@ class MinhController extends Controller
         $this->v['user'] = $obj->loadOne($id);
         // dd($this->v);
         return view('user.detail', $this->v);
+    }
+
+    public function update($id, Request $request)
+    {
+        $method_route = 'user.updates';
+        $params = [];
+        $params['cols'] = $request->post();
+        unset($params['cols']['_token']);
+        $obj = new Minh();
+        $objItem = $obj->loadOne($id);
+        $params['cols']['id'] = $id;
+        if (!is_null($params['cols']['password'])) {
+            $params['cols']['password'] = Hash::make($params['cols']['password']);
+        }
+        $res = $obj->saveUpdate($params);
+        if ($res == null) {
+            return redirect()->route($method_route, ['id' => $id]);
+        } elseif ($res == 1) {
+            Session::flash('success', 'Cap nhat thanh cong ban ghi ' . $objItem->id);
+            return redirect()->route($method_route, ['id' => $id]);
+        } else {
+            Session::flash('error', 'Loi cap nhat ' . $objItem->id);
+            return redirect()->route($method_route, ['id' => $id]);
+        }
     }
 }
