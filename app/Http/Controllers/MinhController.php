@@ -38,11 +38,16 @@ class MinhController extends Controller
     public function add(UserRequest $request)
     {
         $this->v['_title'] = __('sinh vien');
+        $params = [];
         $method_route = 'route_backend_user_add';
         if ($request->isMethod('post')) {
             // dd($request->post());
             $params = $request->post();
             unset($params['_token']);
+            if ($request->hasFile('cmt_mat_truoc') && $request->file('cmt_mat_truoc')->isValid()) {
+                $params['image'] = $this->uploadFile($request->file('cmt_mat_truoc'));
+            }
+
             $obsSinhVien = new Minh();
             $res = $obsSinhVien->saveNew($params);
 
@@ -86,5 +91,11 @@ class MinhController extends Controller
             Session::flash('error', 'Loi cap nhat ' . $objItem->id);
             return redirect()->route($method_route, ['id' => $id]);
         }
+    }
+
+    public function uploadFile($file)
+    {
+        $fileName = time() . '.' . $file->getClientOriginalName();
+        return $file->storeAs('cmnd', $fileName, 'public');
     }
 }
