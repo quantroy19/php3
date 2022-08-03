@@ -13,7 +13,7 @@ class Minh extends Model
     use HasFactory;
     protected $table = 'users';
     protected $fillable = [
-        'id', 'name', 'email', 'password',
+        'id', 'name', 'email', 'password', 'image',
     ];
 
     public function loadList($param = [])

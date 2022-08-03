@@ -4,10 +4,10 @@
     <style>
         body {
             /*-webkit-touch-callout: none;
-                                                                                            -webkit-user-select: none;
-                                                                                            -moz-user-select: none;
-                                                                                            -ms-user-select: none;
-                                                                                            -o-user-select: none;*/
+                                                                                                                                -webkit-user-select: none;
+                                                                                                                                -moz-user-select: none;
+                                                                                                                                -ms-user-select: none;
+                                                                                                                                -o-user-select: none;*/
             user-select: none;
         }
 
@@ -161,6 +161,9 @@
                                 <tr>
                                     {{-- <td><input type="checkbox" name="chk_hv[]" class="chk_hv" id="chk_hv_{{$item->id}}" value="{{$item->id}}"> </td> --}}
                                     <td class="text-center">1</td>
+                                    <td class="text-center"><img width="100px"
+                                            src="{{ $user->image ? '' . Storage::url($user->image) : '' }}" alt="img">
+                                    </td>
                                     <td class="text-center"><a style="color:#333333;font-weight: bold;"
                                             href="{{ route('user.detail', $user->id) }}"
                                             style="white-space:unset;text-align: justify;"> {{ $user->name }} <i
